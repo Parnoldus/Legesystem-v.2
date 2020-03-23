@@ -25,6 +25,10 @@ public class Pasient {
     return navn + "," + foedselsnr;
   }
 
+  public void leggTilResept(Resept r){
+    reseptliste.leggPaa(r);
+  }
+
   /*
     Itererer gjennom listen over pasientens resepter og summerer det totale
     antallet resepter paa narkotiske legemidler.
@@ -40,8 +44,29 @@ public class Pasient {
     return antNarkResepter;
   }
 
+  public Stabel<Resept> hentReseptListe() {
+    return reseptliste;
+  }
+
+  public boolean harNarkResepter() {
+    boolean harNarkRes =false;
+    for (Resept r : reseptliste) {
+      if (r.hentLegemiddel() instanceof Narkotisk) {
+        harNarkRes=true;
+      }
+    }
+    return harNarkRes;
+  }
+
+  public void skrivResepter(){
+    for (Resept r : reseptliste){
+      System.out.println(r);
+    }
+  }
+
+  // paal kommentar: oppgaven ber om aa bruke samme format som i innfilen
   @Override
   public String toString() {
-    return navn + " (fnr: " + foedselsnr + ")";
+    return navn + "," + foedselsnr;
   }
 }

@@ -48,6 +48,10 @@ abstract class Resept implements Comparable<Resept> {
     return brukbar;
   }
 
+  public String hentType() {
+    return getClass().getName();
+  }
+
   abstract public String farge();
 
   abstract public double prisAaBetale();
